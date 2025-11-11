@@ -6151,6 +6151,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5835602796043198434, guid: fa1e3dc2a2ec418e5981010376c244dd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835602796043198434, guid: fa1e3dc2a2ec418e5981010376c244dd, type: 3}
+      propertyPath: _animations
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835602796043198434, guid: fa1e3dc2a2ec418e5981010376c244dd, type: 3}
+      propertyPath: delayBefore
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835602796043198434, guid: fa1e3dc2a2ec418e5981010376c244dd, type: 3}
+      propertyPath: tellingASecret
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835602796043198434, guid: fa1e3dc2a2ec418e5981010376c244dd, type: 3}
+      propertyPath: delayBeforeAnimation
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7399001751251475855, guid: fa1e3dc2a2ec418e5981010376c244dd, type: 3}
       propertyPath: m_Name
       value: Peasant Old Man (1)
@@ -26078,6 +26098,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5835602796043198434, guid: fa1e3dc2a2ec418e5981010376c244dd, type: 3}
+      propertyPath: _animations
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835602796043198434, guid: fa1e3dc2a2ec418e5981010376c244dd, type: 3}
+      propertyPath: idleLooking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835602796043198434, guid: fa1e3dc2a2ec418e5981010376c244dd, type: 3}
+      propertyPath: tellingASecret
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835602796043198434, guid: fa1e3dc2a2ec418e5981010376c244dd, type: 3}
+      propertyPath: delayBeforeAnimation
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7399001751251475855, guid: fa1e3dc2a2ec418e5981010376c244dd, type: 3}
       propertyPath: m_Name
       value: Peasant Old Man
@@ -26088,7 +26124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8273251082776771709, guid: fa1e3dc2a2ec418e5981010376c244dd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 21.79
+      value: 21.76
       objectReference: {fileID: 0}
     - target: {fileID: 8273251082776771709, guid: fa1e3dc2a2ec418e5981010376c244dd, type: 3}
       propertyPath: m_LocalPosition.z
