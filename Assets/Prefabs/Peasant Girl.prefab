@@ -1329,7 +1329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5217819113548725348}
   - component: {fileID: -6636902935868645008}
-  - component: {fileID: 5692887210622580651}
+  - component: {fileID: 1901314457628299925}
   m_Layer: 0
   m_Name: Peasant Girl
   m_TagString: Untagged
@@ -1376,7 +1376,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5692887210622580651
+--- !u!114 &1901314457628299925
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1385,9 +1385,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5812420120193301659}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc0afa919e80d9881b6889f230a73472, type: 3}
+  m_Script: {fileID: 11500000, guid: 25674bd9971017b42bd38778a533fb56, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::GirlAnimationLooper
+  delayBeforeAnimation: 2
+  _animations: -1
 --- !u!1 &5954036255396644225
 GameObject:
   m_ObjectHideFlags: 0
