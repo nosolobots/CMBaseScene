@@ -4,8 +4,9 @@ using UnityEngine;
 public enum BruteAnimations
 {
     None = 0,
-    Crouch = 1 << 0,
-    AxeIdle = 1 << 1,
+    CrouchDefense = 1 << 0,
+    AxeSwing = 1 << 1,
+    BigStrike = 1 << 2,
 }
 
 public class BruteAnimationLooper : AnimationLooper
@@ -16,9 +17,11 @@ public class BruteAnimationLooper : AnimationLooper
     {
         base.Awake();
 
-        if ((_animations & BruteAnimations.Crouch) != 0)
-            _animationsList.Add(Animator.StringToHash(BruteAnimations.Crouch.ToString()));
-        if ((_animations & BruteAnimations.AxeIdle) != 0)
-            _animationsList.Add(Animator.StringToHash(BruteAnimations.AxeIdle.ToString()));
+        if ((_animations & BruteAnimations.CrouchDefense) != 0)
+            _animationsList.Add(Animator.StringToHash(BruteAnimations.CrouchDefense.ToString()));
+        if ((_animations & BruteAnimations.AxeSwing) != 0)
+            _animationsList.Add(Animator.StringToHash(BruteAnimations.AxeSwing.ToString()));
+        if ((_animations & BruteAnimations.BigStrike) != 0)
+            _animationsList.Add(Animator.StringToHash(BruteAnimations.BigStrike.ToString()));
     }
 }

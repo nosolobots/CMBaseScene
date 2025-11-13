@@ -6956,8 +6956,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522811750}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.06965399, y: 0.43587676, z: -0.033870988, w: -0.8966675}
-  m_LocalPosition: {x: 95.84089, y: 24.41419, z: 29.194305}
+  m_LocalRotation: {x: -0.12767261, y: -0.47963288, z: 0.070784114, w: -0.8652408}
+  m_LocalPosition: {x: 54.256264, y: 24.234358, z: 55.195538}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12070,6 +12070,79 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4303765770703250, guid: 9f21020355643c74c88002634abcdabd, type: 3}
   m_PrefabInstance: {fileID: 985501573}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &995799429
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1980425677}
+    m_Modifications:
+    - target: {fileID: 3000869034316742747, guid: 0487c6067e1069fce891bba7487f65ae, type: 3}
+      propertyPath: m_BaseOffset
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527997647541823124, guid: 0487c6067e1069fce891bba7487f65ae, type: 3}
+      propertyPath: m_Name
+      value: Brute Warrior (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6816400665425035149, guid: 0487c6067e1069fce891bba7487f65ae, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 57.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 6816400665425035149, guid: 0487c6067e1069fce891bba7487f65ae, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 21.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 6816400665425035149, guid: 0487c6067e1069fce891bba7487f65ae, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 57.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 6816400665425035149, guid: 0487c6067e1069fce891bba7487f65ae, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.17181076
+      objectReference: {fileID: 0}
+    - target: {fileID: 6816400665425035149, guid: 0487c6067e1069fce891bba7487f65ae, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6816400665425035149, guid: 0487c6067e1069fce891bba7487f65ae, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.98512995
+      objectReference: {fileID: 0}
+    - target: {fileID: 6816400665425035149, guid: 0487c6067e1069fce891bba7487f65ae, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6816400665425035149, guid: 0487c6067e1069fce891bba7487f65ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6816400665425035149, guid: 0487c6067e1069fce891bba7487f65ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 160.214
+      objectReference: {fileID: 0}
+    - target: {fileID: 6816400665425035149, guid: 0487c6067e1069fce891bba7487f65ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887091529164654697, guid: 0487c6067e1069fce891bba7487f65ae, type: 3}
+      propertyPath: allowNone
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887091529164654697, guid: 0487c6067e1069fce891bba7487f65ae, type: 3}
+      propertyPath: _animations
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887091529164654697, guid: 0487c6067e1069fce891bba7487f65ae, type: 3}
+      propertyPath: delayBeforeAnimation
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0487c6067e1069fce891bba7487f65ae, type: 3}
 --- !u!1001 &1002130129
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13344,6 +13417,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4303765770703250, guid: 9f21020355643c74c88002634abcdabd, type: 3}
   m_PrefabInstance: {fileID: 1136028977}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1140786992 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6816400665425035149, guid: 0487c6067e1069fce891bba7487f65ae, type: 3}
+  m_PrefabInstance: {fileID: 995799429}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1146700452
 PrefabInstance:
@@ -20686,6 +20764,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1767446352}
+  - component: {fileID: 1767446353}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -20780,6 +20859,38 @@ Transform:
   - {fileID: 1953252464}
   m_Father: {fileID: 1527322381}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1767446353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767446351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 03a53addc178b52e9952d3c9c5694eb6, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1001 &1772787827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23245,6 +23356,7 @@ Transform:
   - {fileID: 1249369149}
   - {fileID: 462658871}
   - {fileID: 3613893236086560658}
+  - {fileID: 1140786992}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1991407360
@@ -25105,6 +25217,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1980425677}
     m_Modifications:
+    - target: {fileID: 3000869034316742747, guid: 0487c6067e1069fce891bba7487f65ae, type: 3}
+      propertyPath: m_BaseOffset
+      value: -0.17
+      objectReference: {fileID: 0}
     - target: {fileID: 6527997647541823124, guid: 0487c6067e1069fce891bba7487f65ae, type: 3}
       propertyPath: m_Name
       value: Brute Warrior
@@ -25151,7 +25267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6887091529164654697, guid: 0487c6067e1069fce891bba7487f65ae, type: 3}
       propertyPath: _animations
-      value: -1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6887091529164654697, guid: 0487c6067e1069fce891bba7487f65ae, type: 3}
       propertyPath: delayBeforeAnimation
