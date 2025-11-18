@@ -9,6 +9,7 @@ public class Waypoint
     public Transform waypointTransform;
     [Min(0f)]
     public float waitTime = 2f;
+    public bool orientAgent = false;
 }
 
 public class PathFollow : MonoBehaviour
@@ -41,10 +42,7 @@ public class PathFollow : MonoBehaviour
         {
             _moveParameterID = Animator.StringToHash("Move");
         }
-    }
 
-    void Start()
-    {
         // Obtener el NavMeshAgent
         _agent = GetComponent<NavMeshAgent>();
         
@@ -64,7 +62,10 @@ public class PathFollow : MonoBehaviour
             Debug.LogWarning("No hay waypoints asignados en PathFollow");
             return;
         }
+    }
 
+    void Start()
+    {
         // Iniciar el movimiento hacia el primer waypoint
         MoveToNextWaypoint();
     }
@@ -82,6 +83,7 @@ public class PathFollow : MonoBehaviour
         {
             if (_agent.remainingDistance <= waypointReachedDistance)
             {
+                // Iniciar la espera en el waypoint
                 StartCoroutine(WaitAtWaypoint());
             }
         }
@@ -108,6 +110,12 @@ public class PathFollow : MonoBehaviour
     {
         _isWaiting = true;
 
+        // Ajustar la orientación del agente al waypoint
+        if (waypoints[_currentWaypointIndex].orientAgent)
+        {
+            yield return StartCoroutine(OrientateAgentAsWaypoint());
+        }
+
         // Esperar el tiempo configurado para este waypoint
         float waitTime = waypoints[_currentWaypointIndex].waitTime;
         yield return new WaitForSeconds(waitTime);
@@ -117,6 +125,25 @@ public class PathFollow : MonoBehaviour
 
         _isWaiting = false;
     }
+
+    private IEnumerator OrientateAgentAsWaypoint()
+    {
+        Quaternion targetRotation = waypoints[_currentWaypointIndex].waypointTransform.rotation;
+        
+        float elapsedTime = 0f;
+        while (elapsedTime < .5f)
+        {
+            _agent.transform.rotation = Quaternion.Slerp(
+                _agent.transform.rotation,
+                targetRotation,
+                elapsedTime
+            );
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        _agent.transform.rotation = targetRotation;
+    }
+
 
     private void AdvanceToNextWaypoint()
     {
