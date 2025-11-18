@@ -2,23 +2,16 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 using System.Collections.Generic;
-
-[System.Serializable]
-public class Waypoint
-{
-    public Transform waypointTransform;
-    [Min(0f)]
-    public float waitTime = 2f;
-    public bool orientAgent = false;
-}
+using System.IO;
 
 public class PathFollow : MonoBehaviour
 {
-    [Header("Waypoint Settings")]
-    [SerializeField] private List<Waypoint> waypoints = new List<Waypoint>();
-    [SerializeField] private bool loop = true;
-    [SerializeField] private float waypointReachedDistance = 0.5f;
+    [Header("Path Follow Settings")]
+    [SerializeField] PathWaypoints pathWaypoints;
+    [SerializeField] bool loop = true;
+    [SerializeField] float waypointReachedDistance = 0.5f;
 
+    List<Waypoint> _waypoints;
     Animator _animator;
     int _moveParameterID;
     
@@ -56,13 +49,9 @@ public class PathFollow : MonoBehaviour
         // Guardar la velocidad máxima del agente
         _maxSpeed = _agent.speed;
 
-        // Verificar que hay waypoints
-        if (waypoints.Count == 0)
-        {
-            Debug.LogWarning("No hay waypoints asignados en PathFollow");
-            return;
-        }
-    }
+        // Obtenemos los waypoints
+        _waypoints = pathWaypoints.Waypoints;
+}
 
     void Start()
     {
@@ -72,7 +61,7 @@ public class PathFollow : MonoBehaviour
 
     void Update()
     {
-        if (waypoints.Count == 0 || _agent == null)
+        if (_waypoints.Count == 0 || _agent == null)
             return;
 
         // Actualizar el parámetro del animator basado en la velocidad actual
@@ -91,11 +80,11 @@ public class PathFollow : MonoBehaviour
 
     private void MoveToNextWaypoint()
     {
-        if (waypoints.Count == 0)
+        if (_waypoints.Count == 0)
             return;
 
         // Verificar que el waypoint actual es válido
-        if (waypoints[_currentWaypointIndex].waypointTransform == null)
+        if (_waypoints[_currentWaypointIndex].waypointTransform == null)
         {
             Debug.LogWarning($"Waypoint {_currentWaypointIndex} no tiene Transform asignado");
             AdvanceToNextWaypoint();
@@ -103,7 +92,7 @@ public class PathFollow : MonoBehaviour
         }
 
         // Establecer el destino del NavMeshAgent
-        _agent.SetDestination(waypoints[_currentWaypointIndex].waypointTransform.position);
+        _agent.SetDestination(_waypoints[_currentWaypointIndex].waypointTransform.position);
     }
 
     private IEnumerator WaitAtWaypoint()
@@ -111,13 +100,13 @@ public class PathFollow : MonoBehaviour
         _isWaiting = true;
 
         // Ajustar la orientación del agente al waypoint
-        if (waypoints[_currentWaypointIndex].orientAgent)
+        if (_waypoints[_currentWaypointIndex].orientAgent)
         {
             yield return StartCoroutine(OrientateAgentAsWaypoint());
         }
 
         // Esperar el tiempo configurado para este waypoint
-        float waitTime = waypoints[_currentWaypointIndex].waitTime;
+        float waitTime = _waypoints[_currentWaypointIndex].waitTime;
         yield return new WaitForSeconds(waitTime);
 
         // Avanzar al siguiente waypoint
@@ -128,10 +117,10 @@ public class PathFollow : MonoBehaviour
 
     private IEnumerator OrientateAgentAsWaypoint()
     {
-        Quaternion targetRotation = waypoints[_currentWaypointIndex].waypointTransform.rotation;
+        Quaternion targetRotation = _waypoints[_currentWaypointIndex].waypointTransform.rotation;
         
         float elapsedTime = 0f;
-        while (elapsedTime < .5f)
+        while (elapsedTime < 1f)
         {
             _agent.transform.rotation = Quaternion.Slerp(
                 _agent.transform.rotation,
@@ -150,7 +139,7 @@ public class PathFollow : MonoBehaviour
         _currentWaypointIndex++;
 
         // Si hemos llegado al final de la lista
-        if (_currentWaypointIndex >= waypoints.Count)
+        if (_currentWaypointIndex >= _waypoints.Count)
         {
             if (loop)
             {
@@ -161,7 +150,7 @@ public class PathFollow : MonoBehaviour
             else
             {
                 // Detener el movimiento
-                _currentWaypointIndex = waypoints.Count - 1;
+                _currentWaypointIndex = _waypoints.Count - 1;
                 _agent.isStopped = true;
             }
         }
@@ -221,27 +210,27 @@ public class PathFollow : MonoBehaviour
     // Visualización en el editor
     private void OnDrawGizmos()
     {
-        if (waypoints == null || waypoints.Count == 0)
+        if (_waypoints == null || _waypoints.Count == 0)
             return;
 
         Gizmos.color = Color.yellow;
 
-        for (int i = 0; i < waypoints.Count; i++)
+        for (int i = 0; i < _waypoints.Count; i++)
         {
-            if (waypoints[i].waypointTransform != null)
+            if (_waypoints[i].waypointTransform != null)
             {
                 // Dibujar esfera en cada waypoint
-                Gizmos.DrawWireSphere(waypoints[i].waypointTransform.position, 0.3f);
+                Gizmos.DrawWireSphere(_waypoints[i].waypointTransform.position, 0.3f);
 
                 // Dibujar línea al siguiente waypoint
-                int nextIndex = (i + 1) % waypoints.Count;
-                if (nextIndex < waypoints.Count && waypoints[nextIndex].waypointTransform != null)
+                int nextIndex = (i + 1) % _waypoints.Count;
+                if (nextIndex < _waypoints.Count && _waypoints[nextIndex].waypointTransform != null)
                 {
                     if (loop || nextIndex > i)
                     {
                         Gizmos.DrawLine(
-                            waypoints[i].waypointTransform.position,
-                            waypoints[nextIndex].waypointTransform.position
+                            _waypoints[i].waypointTransform.position,
+                            _waypoints[nextIndex].waypointTransform.position
                         );
                     }
                 }
@@ -249,12 +238,12 @@ public class PathFollow : MonoBehaviour
         }
 
         // Resaltar el waypoint actual en tiempo de ejecución
-        if (Application.isPlaying && _currentWaypointIndex < waypoints.Count)
+        if (Application.isPlaying && _currentWaypointIndex < _waypoints.Count)
         {
-            if (waypoints[_currentWaypointIndex].waypointTransform != null)
+            if (_waypoints[_currentWaypointIndex].waypointTransform != null)
             {
                 Gizmos.color = Color.green;
-                Gizmos.DrawWireSphere(waypoints[_currentWaypointIndex].waypointTransform.position, 0.5f);
+                Gizmos.DrawWireSphere(_waypoints[_currentWaypointIndex].waypointTransform.position, 0.5f);
             }
         }
     }
